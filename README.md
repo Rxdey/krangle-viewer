@@ -24,3 +24,9 @@ This tool can be hosted as a website (e.g. on github pages) but I recommend just
 ## Limitations
 - node icons are krangled (sorry!) due to using older javascript skill tree data (I think this could easily be fixed by pulling newer javascript from GGG but I didn't want to break anything else)
 - ascendancy input is a bit weird, you need to scroll in/out sometimes to refresh/show the nodes
+
+
+# 使用
+- 修改了可以匹配天赋id，替换成中文天赋树，其它不变
+- 点击天赋点，右上角搜索要更换的天赋点(名字或者id)
+- 从列表选择天赋点
