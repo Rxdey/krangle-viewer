@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Passive Skill Tree - Path of Exile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta property="og:image" content="https://web.poecdn.com/protected/image/favicon/ogimage.png?v=1&key=DDHQnVxwj0AxeMbsPiRoEQ">
+    <meta property="og:title" content="Passive Skill Tree - Path of Exile">
+    <meta property="og:site_name" content="Path of Exile">
+    <meta property="og:type" content="website">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-config" content="https://web.poecdn.com/protected/image/favicon/browserconfig.xml?v=1&key=_DAMEop2Q0P8drVNG22mVQ">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:locale" content="en_US">
+    <link href="https://web.poecdn.com/protected/css/font.css?v=5931036dae40633eaf1680b366588c43&key=4rcNCimGiCj3Ztjc_v1BUg" media="screen" rel="stylesheet" type="text/css">
+    <link href="https://web.poecdn.com/protected/image/favicon/apple-touch-icon.png?v=1&key=XfoBBjuWlKs3dqMNWmRU0A" rel="apple-touch-icon">
+    <link href="https://web.poecdn.com/protected/image/favicon/apple-touch-icon.png?v=1&key=XfoBBjuWlKs3dqMNWmRU0A" rel="apple-touch-icon" sizes="180x180">
+    <link href="https://web.poecdn.com/protected/image/favicon/favicon-32x32.png?v=1&key=rNXughaDiygT4Cz8KFwoYQ" rel="icon" sizes="32x32" type="image/png">
+    <link href="https://web.poecdn.com/protected/image/favicon/favicon-16x16.png?v=1&key=NCaCW4o5F3-ivvwRcZT3Eg" rel="icon" sizes="16x16" type="image/png">
+    <link href="https://web.poecdn.com/protected/image/favicon/site.webmanifest?v=2&key=sQQh-lS6vZP2jv5iNdyGkg" rel="manifest">
+    <link href="https://web.poecdn.com/protected/image/favicon/safari-pinned-tab.svg?v=1&key=MWdLhN8PhiMcJYIiTRUudQ" rel="mask-icon">
+    <link href="https://web.poecdn.com/protected/image/favicon/favicon.ico?v=1&key=Hd0k46o9F-3yqJ3wD8x8gg" rel="shortcut icon">
+    <link href="https://web.poecdn.com/protected/css/screen.css?v=062d20208181510cbe63cd04256547b9&key=9I1V3Qw0iKQJ2z2MI1RNWg" media="screen" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="fullscreen en_US">
+    <div class="layoutBox1 layoutBoxFull defaultTheme">
+        <div class="topBar first last">
+            <div class="links">
+                <div class="header">Passive Skill Tree<span class="separator">&raquo;</span></div>
+                <div class="selection selected"><a href="/passive-skill-tree">View Tree</a></div>
+
+                <div class="selection selection-right"><a href="/build/create">Create Build</a></div>
+            </div>
+        </div>
+        <div class="layoutBoxContent">
+            <div id="passiveSkillTree">
+                <div id="buildControls">
+                    <h2>Untitled</h2>
+                    <ul class="options">
+                    </ul>
+                </div>
+            </div>
+
+            <style>
+                .suboption {
+                    margin: 1em;
+                }
+
+                .suboption:hover {
+                    box-shadow: 0px 5px 5px gold;
+                }
+            </style>
+
+            <div id="searchparent" style="position:fixed;z-index:1000;left:0; top:0; bottom:100px; width:100%; visibility:hidden">
+                <div style="overflow-y:scroll;z-index:999; scrollbar-width: none; float: left; width: 20%; background:black">
+                    <div><span class="FontinBold">Currently selected: <span id="selectednode">[Click on a node to select it]</span></span></div>
+                    <div><input type="text" id="searchbox"></input></div>
+                    <div id="searchresult"></div>
+                </div>
+                <div id="searchparentclose" style="z-index:998; width:auto; top:0; bottom:100px; height:100%">
+                </div>
+            </div>
+
+            <div id="passiveSkillTreeControlsContainer">
+                <div id="passiveSkillTreeControls">
+                    <div class="poeForm" id="passiveControlsForm">
+                        <div class="controlsTop">
+                            <div class="controlContainer">
+                                <span class="label FontinBold">搜索</span>
+                                <input type="text" name="passiveSearchBox" id="passiveSearchBox" value="" class="textInput">
+                            </div>
+                            <div class="controlContainer">
+                                <span class="label FontinBold">角色</span>
+                                <select name="classStartPoint" id="classStartPoint">
+                                    <option value="0">贵族</option>
+                                    <option value="1">野蛮人</option>
+                                    <option value="2">游侠</option>
+                                    <option value="3" selected="selected">女巫</option>
+                                    <option value="4">决斗者</option>
+                                    <option value="5">圣堂武僧</option>
+                                    <option value="6">暗影刺客</option>
+                                </select>
+                            </div>
+                            <div class="controlContainer">
+                                <span class="label FontinBold">升华试炼</span>
+                                <select name="ascendancyClass" id="ascendancyClass">
+                                    <option value="0">None</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button id="clipboard">复制天赋树信息</button>
+                        <input type="text" id="importtext"></input>
+                        <button id="importbutton">导入</button>
+                        <button id="overwritebutton">覆盖导入</button>
+                        <button id="resetbutton">重置到默认</button>
+
+                        <div class="controlsBottom">
+                            <div class="highlightSimilarNodesContainer">
+                                <input type="checkbox" value="1" name="highlightSimilarNodes" id="highlightSimilarNodes" />强调相似天赋点
+                            </div>
+
+                            <div class="highlightShortestPathsContainer">
+                                <input type="checkbox" value="1" name="highlightShortestPaths" id="highlightShortestPaths" />强调最短路径
+                            </div>
+
+                            <div class="buttonContainer">
+                                <input type="button" value="重置天赋树" class="button1 important" name="resetSkillTree" id="resetSkillTree" />
+                            </div>
+
+
+                            <div class="buttonContainer">
+                                <input type="button" value="Full Screen (f)" class="button1 important" name="toggleFullScreen" id="toggleFullScreen" />
+                            </div>
+
+                            <div class="buttonContainer">
+                                <input type="button" value="Open in new window" style="display: none;" class="button1 important tree-link" />
+                            </div>
+
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://web.poecdn.com/js/lib/require-2.3.2.js?v=63cff817ee978dae612936d4a88a95f8"></script>
+    <script src="https://poecdn.game.qq.com/js/translate.zh_CN.js?v=22ccd7d64f25ad4455771f6d00dee217"></script>
+    <script src="./treeData.js"></script>
+    <script>
+        //<!--
+        window.momentLocale = 'en_US';
+        window.momentTimezone = 'UTC';
+        window.PoELocale = 'en_US';
+
+        require.config({
+            baseUrl: "",
+            paths: { "plugins": "plugins.690517fb7343458edd2984a8f852cd50f722573b", "main": "main.6d3898b89e2654ecc7f28a7c00333677d243fa2d", "skilltree": "skilltree.4e73a4ba138cd3db5cb4c3c9cba8a190e665f6df", "trade": "trade.343dcf598fdd766306620c58418fe60d9992abc9", "itemfilter": "itemfilter.1f799381bae84165548c4793b5345c599278303c", "notice": "notice.c9db72f8c4b21c28088546508836527e3913f4ec", "adminprofile": "adminprofile.09935733276517bf38a9edd0709ef52cf8d3b9d9" },
+            shim: { "main": { "deps": ["config", "plugins"] }, "plugins": { "deps": ["config"] }, "notice": { "deps": ["config"] } }
+        });
+        require(["main"]);
+        //-->
+    </script>
+    <script>
+        //<!--
+        var nodeClickCallback = null;
+        require(['main'], function () {
+            require(['skilltree'], function (PassiveSkillTree) {
+                original = {};
+
+                for (const id in passiveSkillTreeData.nodes) {
+                    let node = passiveSkillTreeData.nodes[id];
+
+                    if (node.classStartIndex || id == "root") {
+                        continue;
+                    }
+
+                    const data = {
+                        name: node.name,
+                        stats: node.stats,
+                        icon: node.icon,
+                        masteryEffects: node.masteryEffects,
+                        activeIcon: node.activeIcon,
+                        inactiveIcon: node.inactiveIcon,
+                        reminderText: node.reminderText,
+                    };
+
+                    let found = false;
+                    for (i in original) {
+                        if (original[i].name == data.name && original[i].stats.toString() == data.stats.toString()) {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    //node.name = "";
+                    node.stats = [];
+                    node.icon = "";
+                    node.inactiveIcon = "";
+                    node.masteryEffects = [];
+                    node.reminderText = undefined;
+
+                    if (!found) {
+                        original[id] = data;
+                    }
+                }
+
+                var searchparent = document.getElementById('searchparent');
+                var searchparentclose = document.getElementById('searchparentclose');
+
+                searchparentclose.addEventListener('click', function (event) {
+                    searchparent.style = "position:fixed;z-index:1000;left:0; top:0; bottom:100px; width:0%; visibility:hidden";
+                });
+
+                var selectednode = null;
+                nodeClickCallback = function (id) {
+                    selectednode = id;
+                    document.getElementById('searchparent').style = "position:fixed;z-index:1000;left:0; top:0; bottom:100px; width:100%";
+                    document.getElementById('selectednode').innerHTML = id;
+                    document.getElementById('searchbox').focus();
+                };
+
+                var mapping = localStorage.getItem('mapping');
+                if (!mapping) {
+                    mapping = {};
+                } else {
+                    mapping = JSON.parse(mapping);
+                }
+
+                function changeNodeTo(id) {
+                    console.log('changeNodeTo: ' + id + ' ' + selectednode);
+                    if (selectednode) {
+                        mapping[selectednode] = id;
+                    }
+                    localStorage.setItem('mapping', JSON.stringify(mapping));
+                    const e = new Event('input', { 'bubbles': true, 'cancelable': true });
+                    const sb = document.getElementById('searchbox');
+                    const sr = document.getElementById('searchresult');
+                    sb.value = "";
+                    sb.dispatchEvent(e);
+                    sr.innerHTML = "";
+
+
+                    for (const from in mapping) {
+                        Object.assign(passiveSkillTreeData.nodes[from], original[mapping[from]]);
+                    }
+                    treeControls.skillTree.initGraph(treeControls.passiveSkillTreeData);
+                    if (treeControls.skillTree.ascendancyClass !== 0) {
+                        treeControls.skillTree.reset({
+                            characterClass: treeControls.skillTree.characterClass,
+                            ascendancyClass: treeControls.skillTree.ascendancyClass,
+                            accountName: null,
+                            characterName: null
+                        });
+                    }
+                    treeControls.skillTree.fullRedraw();
+                }
+
+                const resbox = document.getElementById('searchresult');
+
+                document.getElementById('searchbox').addEventListener("keypress", ev => ev.stopPropagation());
+
+                document.getElementById('searchbox').oninput = ev => {
+                    let search = ev.target.value.toLowerCase();
+                    resbox.innerHTML = "";
+                    for (const id in original) {
+                        if (original[id].name.toLowerCase().startsWith(search)|| id === search) {
+                            let e = document.createElement('div');
+                            e.className = "suboption";
+                            e.innerHTML = original[id].name;
+                            for (const i in original[id].stats) {
+                                e.innerHTML += '<br>' + original[id].stats[i];
+                            }
+                            e.onclick = () => {
+                                changeNodeTo(id);
+                                document.getElementById('searchparent').style = "position:fixed;z-index:1000;left:0; top:0; bottom:100px; width:0%; visibility:hidden";
+                            };
+                            resbox.appendChild(e);
+                        }
+                    }
+                };
+
+                document.getElementById('clipboard').onclick = function () {
+                    navigator.clipboard.writeText(JSON.stringify(mapping));
+                };
+
+                document.getElementById('importbutton').onclick = () => {
+                    const diff = JSON.parse(document.getElementById('importtext').value);
+                    mapping = Object.assign(diff, mapping);
+                    localStorage.setItem('mapping', JSON.stringify(mapping));
+                };
+
+                document.getElementById('overwritebutton').onclick = () => {
+                    const diff = JSON.parse(document.getElementById('importtext').value);
+                    Object.assign(mapping, diff);
+                    localStorage.setItem('mapping', JSON.stringify(mapping));
+                };
+
+                document.getElementById('resetbutton').onclick = () => {
+                    localStorage.setItem('mapping', '');
+                };
+
+                for (const from in mapping) {
+                    Object.assign(passiveSkillTreeData.nodes[from], original[mapping[from]]);
+                }
+                var opts = {
+                    passiveSkillTreeData: passiveSkillTreeData,
+                    zoomLevels: [0.1246, 0.2109, 0.2972, 0.3835],
+                    height: 767,
+                    startClass: 3,
+                    fullScreen: true,
+                    version: '3.22.0',
+                    realm: 'pc',
+                    build: {}
+                };
+                window.treeControls = new PassiveSkillTree.controls(opts);
+            });
+        });
+
+        //-->
+    </script>
+</body>
+
+</html>
